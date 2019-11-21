@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initCostDate() {
-//          mDatabaseHelper.deleteAllData();
+          mDatabaseHelper.deleteAllData();
 //        for (int i = 0;i < 6;i++) {
 //            CostBean costBean = new CostBean();
 //            costBean.costTitle = "mock" + i;

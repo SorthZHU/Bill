@@ -34,7 +34,7 @@ public class ChartsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chart_view);
-//        mData = new LineChartData();
+
         mChart = (LineChartView) findViewById(R.id.chart);
         List<CostBean> allDate = (List<CostBean>)getIntent().getSerializableExtra("cost_list");
         getAxisLables(allDate);
@@ -71,18 +71,7 @@ public class ChartsActivity extends Activity {
         axisY.setName("消费");//y轴标注
         axisY.setTextSize(10);//设置字体大小
         mData.setAxisYLeft(axisY);  //Y轴设置在左边
-//        Axis axisX = new Axis();
-//        Axis axisY = new Axis();
-//        boolean hasAxesNames = true;
-//        if (hasAxesNames) {
-//            axisX.setTextColor(Color.BLACK);//设置x轴字体的颜色
-//            axisY.setTextColor(Color.BLACK);//设置y轴字体的颜色
-//            axisX.setName("日期");
-//            axisY.setName("消费");
-//            hasAxesNames = false;
-//        }
-//        mData.setAxisXBottom(axisX);
-//        mData.setAxisYLeft(axisY);
+
     }
     private void getAxisLables(List<CostBean> allDate){
         for (int i = 0;i < allDate.size();i++){

@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import lecho.lib.hellocharts.model.Axis;
+import lecho.lib.hellocharts.model.AxisValue;
 import lecho.lib.hellocharts.model.ChartData;
 import lecho.lib.hellocharts.model.Line;
 import lecho.lib.hellocharts.model.LineChartData;
@@ -27,7 +28,7 @@ public class ChartsActivity extends Activity {
     private LineChartView mChart;
     private Map<String,Integer> table = new TreeMap<>();
     private LineChartData mData;
-
+    private List<AxisValue> mAxisXValues = new ArrayList<AxisValue>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class ChartsActivity extends Activity {
 //        mData = new LineChartData();
         mChart = (LineChartView) findViewById(R.id.chart);
         List<CostBean> allDate = (List<CostBean>)getIntent().getSerializableExtra("cost_list");
-
+        getAxisLables(allDate);
         generateValues(allDate);
         generateData();
     }
@@ -60,15 +61,35 @@ public class ChartsActivity extends Activity {
         mData.setLines(lines);
         mChart.setLineChartData(mData);
 
-//        Axis axisX = new Axis();//X轴
-//        axisX.setHasTiltedLabels(true);
-//        axisX.setTextColor(Color.GRAY);
-//        axisX.setValues(mAxisXValues);
+        Axis axisX = new Axis(); //X轴
+        axisX.setHasTiltedLabels(true);  //X坐标轴字体是斜的显示还是直的，true是斜的显示
+        axisX.setTextColor(Color.GRAY);  //设置字体颜色
+        axisX.setValues(mAxisXValues);  //填充X轴的坐标名称
+        axisX.setName("日期");
+        mData.setAxisXBottom(axisX); //x 轴在底部
+        Axis axisY = new Axis();  //Y轴
+        axisY.setName("消费");//y轴标注
+        axisY.setTextSize(10);//设置字体大小
+        mData.setAxisYLeft(axisY);  //Y轴设置在左边
+//        Axis axisX = new Axis();
+//        Axis axisY = new Axis();
+//        boolean hasAxesNames = true;
+//        if (hasAxesNames) {
+//            axisX.setTextColor(Color.BLACK);//设置x轴字体的颜色
+//            axisY.setTextColor(Color.BLACK);//设置y轴字体的颜色
+//            axisX.setName("日期");
+//            axisY.setName("消费");
+//            hasAxesNames = false;
+//        }
 //        mData.setAxisXBottom(axisX);
-//
-//        Axis axisY = new Axis();//Y轴
-//        axisY.setName("");
-//
+//        mData.setAxisYLeft(axisY);
+    }
+    private void getAxisLables(List<CostBean> allDate){
+        for (int i = 0;i < allDate.size();i++){
+            CostBean costBean = allDate.get(i);
+            String costDate = costBean.costDate;
+            mAxisXValues.add(new AxisValue(i).setLabel(costDate));
+        }
     }
 
     private void generateValues(List<CostBean> allDate) {

@@ -23,6 +23,8 @@
             android:name=".ChartsActivity"
             android:label="Chart" >
         </activity>
+
+
     </application>
 
 </manifest>

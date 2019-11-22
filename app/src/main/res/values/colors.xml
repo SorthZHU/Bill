@@ -4,4 +4,11 @@
     <color name="colorPrimaryDark">#2B2B2B</color>
     <color name="colorAccent">#F8FFCE3B</color>
     <color name="textColorPrimary">#F44336</color>
+    <!-- *********************************底部选项卡区域********************************* -->
+    <!-- 底部选项卡底部背景色 -->
+    <color name="tab_bg_normal">#00000000</color>
+    <color name="tab_bg_selected">#00000000</color>
+    <!-- 底部选项卡文本颜色 -->
+    <color name="tab_text_normal">#8a8a8a</color>
+    <color name="tab_text_selected">#38ADFF</color>
 </resources>
